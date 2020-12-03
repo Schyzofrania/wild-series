@@ -45,8 +45,7 @@ class CategoryController extends AbstractController
             ->findOneBy(['name' => $categoryName]);
 
         $program = $this->getDoctrine()
-        ->getRepository(Program::class)
-        ->findBy(['category' => $category], ['id' => 'DESC']);    
+        ->getRepository(Program::class);    
 
         return $this->render('category/show.html.twig', [
             'category' => $category,

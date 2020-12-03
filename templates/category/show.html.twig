@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category{% endblock %}
+{% block title %} Catégorie {{ category.name }}{% endblock %}
 
 {% block body %}
-    <h1>Toutes les séries de la table category : </h1>
+    <h1>Toutes les séries de la catégorie {{ category.name }} : </h1>
     {% for programs in program %}
     {{programs.title}}
     {% else %}
