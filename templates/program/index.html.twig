@@ -3,7 +3,7 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
-    <h1>Toutes les séries de la table program : </h1>
+    <h1>Toutes les séries: </h1>
     {% for program in programs %}
         <div>
             <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
@@ -13,7 +13,7 @@
     {% else %}
         Aucune série trouvée.
     {% endfor %}
-
+    <p><a href="{{path('program_new') }}">Add a new program</a></p>
     <a href="{{ path('app_index') }}">
         Retour à l'accueil
     </a>
