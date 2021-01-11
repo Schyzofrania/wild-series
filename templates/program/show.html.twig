@@ -13,6 +13,8 @@
       <h4><a href="{{ path('program_season_show', {"seasonId": season.id, "programId": program.id}) }}">Saison {{ season.number }}</a></h4>
       <h4>{{ season.description }}</h4>
     {% endfor %}
+    <a href="/season/new"><button>New Season</button></a>
+    <a href="/episode/new"><button>New Episode</button></a>
   </div>
 </div>
 <p><a href="{{ path('program_index') }}">

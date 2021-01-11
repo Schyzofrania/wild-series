@@ -20,7 +20,7 @@ class ProgramController extends AbstractController
 {
     /**
      *  Show all rows from Program's entity
-     * 
+     *
      *  @Route("/", name="index")
      *  @return Response A response instance
      */
@@ -31,10 +31,10 @@ class ProgramController extends AbstractController
             ->findAll();
 
         return $this->render(
-            'program/index.html.twig', 
+            'program/index.html.twig',
             ['programs'=> $programs,]
         );
-        
+
     }
         /**
      * The controller for the category add form
@@ -42,8 +42,8 @@ class ProgramController extends AbstractController
      * @Route("/new", name="new")
      */
     public function new(Request $request) : Response
-    { 
-        $program = new Program(); 
+    {
+        $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -62,8 +62,8 @@ class ProgramController extends AbstractController
      */
     public function show(Program $program):Response
     {
-        
-        $season = $program->getSeasons();    
+
+        $season = $program->getSeasons();
 
         if (!$program) {
             throw $this->createNotFoundException(
@@ -79,7 +79,7 @@ class ProgramController extends AbstractController
     /**
     * @Route("/{programId}/seasons/{seasonId}", methods={"GET"}, name="season_show")
     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"programId": "id"}})
-    * @ParamConverter("season", class="App\Entity\Season", options={"mapping": {"seasonId": "id"}})   
+    * @ParamConverter("season", class="App\Entity\Season", options={"mapping": {"seasonId": "id"}})
     */
     public function showSeason(Program $program, Season $season):Response
     {
@@ -110,5 +110,5 @@ class ProgramController extends AbstractController
             'season' => $season,
             'episode' => $episode,
         ]);
-    }   
+    }
 }

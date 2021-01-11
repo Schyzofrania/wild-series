@@ -20,7 +20,7 @@ class CategoryController extends AbstractController
      * @Route("/", name="index")
      */
     public function index(): Response
-    {   
+    {
         $category = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findAll();
@@ -35,8 +35,8 @@ class CategoryController extends AbstractController
      * @Route("/new", name="new")
      */
     public function new(Request $request) : Response
-    { 
-        $category = new Category(); 
+    {
+        $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -54,7 +54,7 @@ class CategoryController extends AbstractController
      * @return Response
      */
     public function show(string $categoryName): Response
-    {   
+    {
         if (!$categoryName) {
             throw $this->createNotFoundException(
                 'No program with id : '.$categoryName.' found in program\'s table.'
@@ -65,7 +65,7 @@ class CategoryController extends AbstractController
             ->findOneBy(['name' => $categoryName]);
 
         $program = $this->getDoctrine()
-        ->getRepository(Program::class);    
+        ->getRepository(Program::class);
 
         return $this->render('category/show.html.twig', [
             'category' => $category,
